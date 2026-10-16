@@ -1,0 +1,10 @@
+import sys; sys.path.insert(0,'.')
+from harness import *
+g=Game('work/stonk.z80')
+g.run(100)
+g.screenshot('work/t1a.png')
+g.tap('SP',5,50)
+g.screenshot('work/t1b.png')
+g.run(200)
+g.screenshot('work/t1c.png')
+print(hex(g.reg[PC]), len(g.emap))

@@ -1,0 +1,20 @@
+Stonkers (Imagine, 1983) - "bridge crash" fix as POKEs
+=====================================================
+
+Apply these with the game paused in an emulator (or poke them into a
+snapshot).  They make the same 11-byte change as make_fixed_tap.py:
+
+POKE 51692,3: POKE 51694,24: POKE 51695,78: POKE 51696,126: POKE 51697,214: POKE 51698,1: POKE 51699,39: POKE 51700,119: POKE 51701,32: POKE 51702,10: POKE 51703,193
+
+Address  Old  New
+$C9EC     04   03     JR Z offset
+$C9EE     C3   18     JP $CA3E  ->  JR $CA3E
+$C9EF     3E   4E
+$C9F0     CA   7E     LD A,(HL)   (code shuffled up one byte)
+$C9F1     7E   D6     SUB $01
+$C9F2     D6   01
+$C9F3     01   27     DAA
+$C9F4     27   77     LD (HL),A
+$C9F5     77   20     JR NZ,$CA01
+$C9F6     20   0A
+$C9F7     09   C1     POP BC  <- the missing instruction

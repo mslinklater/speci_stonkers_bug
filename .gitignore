@@ -1,0 +1,12 @@
+# Generated locally by tools/setup.sh - not distributed
+tools/venv/
+tools/work/
+*.tap
+*.TAP
+*.tzx
+*.z80
+*.szx
+*.sna
+*.skool
+__pycache__/
+.DS_Store
